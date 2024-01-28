@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Tadajb Software</title>
@@ -57,12 +57,203 @@ Once again, welcome to Tadajb Software. We look forward to helping you achieve y
     <h3>Contact Information</h3>
     <p>Phone number: +237671466026</p>
     <p>Email: tadamusajb1@gmail.com</p>
+    <p>Follow us on: <a href="https://www.facebook.com/tadajb">Facebook</a>	</p>
     
-    <h3>CEO Information</h3>
+    <h3>CEO's Short Biography</h3>
     <p>Tada Musa JB is a young software engineering student and a programmer from Jubrilli, Nigeria. Tada showed an early interest in technology and education. He attended Jubrilli Nursery School around 2007 and later moved on to Jubrilli primary school francaphone in Cameroon. However, due to the Boko Haram insurgency, Tada was forced to seek refuge in Minawao Camp, Cameroon.
 Despite the challenges he faced, Tada remained dedicated to his education. He started schooling in Cameroon around 2015 and is currently in Lower sixth science at GBHS Mokolo. His passion for technology and education led him to create Tadajb Software, an educational website that aims to provide quality learning resources to students around the world.
 The story of Tada is of resilience and determination. His journey from a young boy in a refugee camp to a successful young web developer is an inspiration to many. Through Tadajb Software, he hopes to make a positive impact on the lives of others by providing them with the tools they need to succeed in their studies. To conclude this, he is showing his gratitude to Enginneer Garba John aka Amchide, for his continous support and encouragements in the world of technology. Thanks for reading. </p>
-    <p>©Tada Musa JB</p>
+    
+    <p>©Tada Musa JB </p>
+      
+      
+    <p>Tada Musa JB has included an inbuilt chatroom inside Tadajb Software. You can chat with friends by just sending them a message through email.</p> 
+    <head2>
+ <title>Chat Application</title>
+ <style>
+  body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+  }
+
+  header {
+   background-color: green;
+   color: #fff;
+   padding: 20px;
+   text-align: center;
+  }
+
+  main {
+   padding: 20px;
+  }
+
+  form {
+   margin-bottom: 20px;
+  }
+
+  label {
+   display: block;
+   margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+   width: 100%;
+   padding: 5px;
+   margin-bottom: 10px;
+  }
+
+  button {
+   background-color: #333;
+   color: #fff;
+   border: none;
+   padding: 10px 20px;
+   cursor: pointer;
+  }
+
+  button:hover {
+   background-color: #564;
+  }
+
+  h2 {
+   color: #333;
+   text-align: center;
+  }
+
+  p {
+   margin-bottom: 20px;
+  }
+
+  .chat-container {
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin-bottom: 20px;
+  }
+
+  .chat-container p {
+   margin: 0;
+  }
+ </style>
+</head>
+<body>
+ <header>
+  <h1>Welcome to Chat Application</h1>
+ </header>
+
+ <main>
+  <div id="login" style="display: block;">
+   <h2>Login</h2>
+   <form>
+    <label for="loginEmail">Email:</label>
+    <input type="email" id="loginEmail" required>
+
+    <label for="loginPassword">Password:</label>
+    <input type="password" id="loginPassword" required>
+
+    <button type="submit" onclick="login(event)">Login</button>
+   </form>
+   <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign up</a></p>
+  </div>
+
+  <div id="signup" style="display: none;">
+   <h2>Sign Up</h2>
+   <form>
+    <label for="signupName">Name:</label>
+    <input type="text" id="signupName" required>
+
+    <label for="signupEmail">Email:</label>
+    <input type="email" id="signupEmail" required>
+
+    <label for="signupPassword">Password:</label>
+    <input type="password" id="signupPassword" required>
+
+    <button type="submit" onclick="signup(event)">Sign Up</button>
+   </form>
+   <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
+  </div>
+
+  <div id="chat" style="display: none;">
+   <h2>Chat</h2>
+   <div id="8"></div>
+
+   <form>
+    <label for="friendEmail">Friend's Email:</label>
+    <input type="email" id="friendEmail" required>
+
+    <label for="message">Message:</label>
+    <input type="text" id="message" required>
+
+    <button type="submit" onclick="sendMessage(event)">Send Message</button>
+   </form>
+
+   <p><a href="#" onclick="logout()">Logout</a></p>
+  </div>
+ </main>
+
+ <script>
+  let currentUser = null;
+
+  function toggleForm(formId) {
+   document.getElementById('login').style.display = formId === 'login' ? 'block' : 'none';
+   document.getElementById('signup').style.display = formId === 'signup' ? 'block' : 'none';
+  }
+
+  function login(event) {
+   event.preventDefault();
+   const email = document.getElementById('loginEmail').value;
+   const password = document.getElementById('loginPassword').value;
+
+   // Perform login logic here (e.g., check credentials in a database)
+   // If login is successful, set the currentUser and show the chat section
+   currentUser = { email: email };
+   showChat();
+  }
+
+  function signup(event) {
+   event.preventDefault();
+   const name = document.getElementById('signupName').value;
+   const email = document.getElementById('signupEmail').value;
+   const password = document.getElementById('signupPassword').value;
+
+   // Perform signup logic here (e.g., store user details in a database)
+   // If signup is successful, set the currentUser and show the chat section
+   currentUser = { email: email };
+   showChat();
+  }
+
+  function showChat() {
+   document.getElementById('login').style.display = 'none';
+   document.getElementById('signup').style.display = 'none';
+   document.getElementById('chat').style.display = 'block';
+  }
+
+  function sendMessage(event) {
+   event.preventDefault();
+   const friendEmail = document.getElementById('friendEmail').value;
+   const message = document.getElementById('message').value;
+
+   // Perform sending message logic here (e.g., send email to friendEmail)
+   const chatContainer = document.getElementById('chatContainer');
+   const chatMessage = document.createElement('p');
+   chatMessage.textContent = `To: ${friendEmail} - Message: ${message}`;
+   chatContainer.appendChild(chatMessage);
+
+   document.getElementById('friendEmail').value = '';
+   document.getElementById('message').value = '';
+  }
+
+  function logout() {
+   currentUser = null;
+   document.getElementById('chatContainer').innerHTML = '';
+   document.getElementById('chat').style.display = 'none';
+   document.getElementById('login').style.display = 'block';
+  }
+ </script>
+
+    
+    
     
     <p id="current-time"></p>
   </main>
@@ -84,6 +275,6 @@ The story of Tada is of resilience and determination. His journey from a young b
     // Call the function when the page loads
     window.onload = getCurrentDateTime;
   </script>
-  
+
 </body>
-</html>
+    </html
